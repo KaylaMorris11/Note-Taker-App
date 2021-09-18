@@ -4,7 +4,7 @@ const path = require("path");
 const { v4: uuidv4 } = require('uuid');
 
 const express = require("express");
-const db = require("./db/db.json");
+// const db = require("./db/db.json");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,17 +26,11 @@ app.get("/api/notes", (req, res) => {
             console.log(data);
             const parsedData = JSON.parse(data);
             res.json(parsedData);
-        
+
             return parsedData;
         }
     });
 });
-
-// const readFromFileAsync = util.promisify(fs.readFile);
-
-// const readFromFile = () => {
-//     return data;
-// };
 
 const writeToFile = (destination, content) =>
     fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
@@ -58,17 +52,15 @@ const readAndAppend = (content, file) => {
 
 app.post("/api/notes", (req, res) => {
     //Get the current Notes by reading them from `db.json`
-    fs.readFile(path.join(__dirname, "db/db.json"), "utf8", (err, data) => {
-
-        //Append a new note to the collection of notes
-        const notes = JSON.parse(data);
+    var readData = fs.readFile("./db/db.json", 'utf8', (err, data) => {
+        // const notes = JSON.parse(data);
 
         //Save the newly extended collection back to db.json
-        const notesJSON = JSON.stringify(notes);
+        // const notesJSON = JSON.stringify(notes);
 
         if (req.body) {
-
             readAndAppend(req.body, './db/db.json');
+            return readData;
         } else {
             res.error('Error in adding note');
         }
@@ -90,7 +82,7 @@ app.post("/api/notes", (req, res) => {
 //       }
 //     );
 //   });
-  
+
 
 app.get("*", (req, res) => {
 
