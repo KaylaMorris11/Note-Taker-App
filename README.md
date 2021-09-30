@@ -10,7 +10,6 @@ This app will allow users to jot down and delete any notes they have in mind.
 
 ![Screen Shot 2021-09-30 at 4 14 59 PM](https://user-images.githubusercontent.com/78561316/135541901-d2f78a31-25a0-4d13-aea1-7dedfbf0222c.png)
 
-
 # Technologies
 
 HTML, CSS, Javascript
