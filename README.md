@@ -1,5 +1,8 @@
 # Note-Taker-App
 
+# Deployed Page URL
+https://note-taking-app2.herokuapp.com/
+
 # Description
 This app will allow users to jot down and delete any notes they have in mind.
 
